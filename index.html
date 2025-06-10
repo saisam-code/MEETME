@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sai Samslesh | Technical Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-dark: #0A0A0A;
+      --bg-darker: #050505;
+      --accent-lavender: #8B5CF6;
+      --accent-lavender-light: #A78BFA;
+      --cta-coral: #F472B6;
+      --cta-coral-light: #F9A8D4;
+      --highlight-blue: #60A5FA;
+      --highlight-blue-light: #93C5FD;
+      --success-mint: #2DD4BF;
+      --success-mint-light: #5EEAD4;
+      --text-offwhite: #F3F4F6;
+      --text-offwhite-dim: #E5E7EB;
+      --border-dark: #1F1F1F;
+      --hover-gold: #FBBF24;
+      --hover-gold-light: #FCD34D;
+      --electric-purple: #C084FC;
+      --neon-pink: #EC4899;
+      --cyber-teal: #06D6A0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-offwhite);
+      background: var(--bg-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    /* Particle Animation Background */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: var(--electric-purple);
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: float 15s infinite linear;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.8;
+      }
+      90% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-100vh) translateX(100px);
+        opacity: 0;
+      }
+    }
+
+    /* Code Animation Overlay */
+    .code-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      opacity: 0.05;
+      overflow: hidden;
+    }
+
+    .code-text {
+      font-family: monospace;
+      font-size: 1rem;
+      color: var(--highlight-blue-light);
+      white-space: pre;
+      position: absolute;
+      animation: scrollCode 45s linear infinite;
+      text-shadow: 0 0 15px rgba(96, 165, 250, 0.7);
+      filter: brightness(1.2);
+    }
+
+    @keyframes scrollCode {
+      0% { transform: translateY(100vh); }
+      100% { transform: translateY(-100vh); }
+    }
+
+    /* Gradient Mesh Background */
+    .gradient-mesh {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.15) 0%, transparent 30%),
+        radial-gradient(circle at 80% 70%, rgba(244, 114, 182, 0.15) 0%, transparent 30%),
+        radial-gradient(circle at 40% 80%, rgba(96, 165, 250, 0.15) 0%, transparent 30%);
+      z-index: -2;
+      opacity: 0.6;
+    }
+
+    /* Header */
+    header {
+      background: rgba(10, 10, 10, 0.85);
+      padding: 1.5rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(31, 31, 31, 0.5);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+      transition: all 0.4s ease;
+    }
+
+    header.scrolled {
+      padding: 1rem 2rem;
+      background: rgba(5, 5, 5, 0.95);
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent-lavender);
+      text-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .logo::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--hover-gold);
+      transition: width 0.3s ease;
+    }
+
+    .logo:hover {
+      color: var(--hover-gold);
+      text-shadow: 0 0 20px rgba(251, 191, 36, 0.7);
+    }
+
+    .logo:hover::after {
+      width: 100%;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      color: var(--text-offwhite);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+      padding: 0.5rem 0;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--hover-gold);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--hover-gold);
+      text-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Main Content */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    section {
+      margin-bottom: 6rem;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: var(--accent-lavender);
+      margin-bottom: 2rem;
+      text-align: center;
+      text-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+      position: relative;
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent-lavender), var(--cta-coral), transparent);
+      border-radius: 2px;
+    }
+
+    /* About Section */
+    .about-content {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .profile-img-container {
+      position: relative;
+      width: fit-content;
+      margin: 0 auto 2rem;
+    }
+
+    .profile-img {
+      width: 100%;
+      max-width: 280px;
+      border-radius: 16px;
+      display: block;
+      border: 3px solid var(--border-dark);
+      box-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+      transition: all 0.4s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .profile-img-container::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      border-radius: 25px;
+      background: linear-gradient(45deg, var(--accent-lavender), var(--cta-coral), var(--highlight-blue));
+      z-index: 0;
+      opacity: 0;
+      transition: all 0.4s ease;
+    }
+
+    .profile-img-container:hover::before {
+      opacity: 0.7;
+      top: -15px;
+      left: -15px;
+      right: -15px;
+      bottom: -15px;
+    }
+
+    .profile-img-container:hover .profile-img {
+      transform: scale(1.05) rotate(2deg);
+      box-shadow: 0 0 40px rgba(251, 191, 36, 0.5);
+      border-color: var(--hover-gold);
+    }
+
+    .about-text p {
+      font-size: 1.1rem;
+      color: var(--text-offwhite-dim);
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .skill-tag {
+      background: rgba(31, 31, 31, 0.8);
+      border: 1px solid var(--border-dark);
+      color: var(--highlight-blue-light);
+      padding: 0.6rem 1.2rem;
+      border-radius: 25px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skill-tag::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(251, 191, 36, 0.3), transparent);
+      transition: all 0.6s ease;
+    }
+
+    .skill-tag:hover {
+      background: var(--hover-gold);
+      color: var(--bg-darker);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(251, 191, 36, 0.4);
+      border-color: var(--hover-gold-light);
+    }
+
+    .skill-tag:hover::before {
+      left: 100%;
+    }
+
+    /* Cards */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .card {
+      background: linear-gradient(135deg, rgba(31, 31, 31, 0.8), rgba(10, 10, 10, 0.95));
+      border-radius: 16px;
+      padding: 2.5rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(31, 31, 31, 0.5);
+      backdrop-filter: blur(8px);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, var(--accent-lavender), var(--cta-coral), var(--highlight-blue));
+      z-index: -1;
+      border-radius: 18px;
+      opacity: 0;
+      transition: all 0.4s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 40px rgba(251, 191, 36, 0.3);
+      border-color: rgba(251, 191, 36, 0.3);
+    }
+
+    .card:hover::before {
+      opacity: 0.3;
+    }
+
+    .card h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--accent-lavender-light);
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+      text-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .card h3 i {
+      color: var(--hover-gold);
+    }
+
+    .card .date {
+      color: var(--cta-coral-light);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+      display: block;
+      font-weight: 500;
+    }
+
+    .card ul {
+      list-style: none;
+    }
+
+    .card ul li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.8rem;
+      color: var(--text-offwhite-dim);
+    }
+
+    .card ul li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--hover-gold);
+    }
+
+    .badge {
+      background: rgba(45, 212, 191, 0.15);
+      border: 1px solid var(--success-mint-light);
+      color: var(--success-mint-light);
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      margin-right: 0.8rem;
+      margin-bottom: 0.8rem;
+      display: inline-block;
+      box-shadow: 0 0 10px rgba(45, 212, 191, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .badge:hover {
+      background: var(--success-mint);
+      color: var(--bg-darker);
+      transform: translateY(-2px);
+      box-shadow: 0 0 15px rgba(45, 212, 191, 0.5);
+    }
+
+    /* Projects */
+    .project-img-container {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+      transition: all 0.4s ease;
+    }
+
+    .project-img {
+      width: 100%;
+      display: block;
+      transition: all 0.6s ease;
+    }
+
+    .project-img-container::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(139, 92, 246, 0.2), rgba(244, 114, 182, 0.3));
+      opacity: 0;
+      transition: all 0.4s ease;
+    }
+
+    .project-img-container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(251, 191, 36, 0.3);
+    }
+
+    .project-img-container:hover .project-img {
+      transform: scale(1.05);
+    }
+
+    .project-img-container:hover::after {
+      opacity: 1;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    /* Buttons */
+    .btn {
+      background: var(--cta-coral);
+      color: #FFFFFF;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      cursor: pointer;
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      box-shadow: 0 4px 15px rgba(244, 114, 182, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: all 0.6s ease;
+    }
+
+    .btn:hover {
+      background: var(--hover-gold);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(251, 191, 36, 0.6);
+    }
+
+    .btn:hover::before {
+      left: 100%;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--highlight-blue);
+      color: var(--highlight-blue-light);
+      box-shadow: none;
+    }
+
+    .btn-outline:hover {
+      background: var(--highlight-blue);
+      color: #FFFFFF;
+      box-shadow: 0 8px 20px rgba(96, 165, 250, 0.6);
+      border-color: var(--highlight-blue-light);
+    }
+
+    /* Contact Form */
+    .contact-form {
+      max-width: 700px;
+      margin: 0 auto;
+      background: rgba(31, 31, 31, 0.8);
+      padding: 3rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(31, 31, 31, 0.5);
+      backdrop-filter: blur(8px);
+      transition: all 0.4s ease;
+    }
+
+    .contact-form:hover {
+      box-shadow: 0 12px 40px rgba(139, 92, 246, 0.3);
+      border-color: rgba(139, 92, 246, 0.3);
+    }
+
+    .form-group {
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--text-offwhite-dim);
+      font-weight: 500;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 1.2rem;
+      background: rgba(15, 15, 15, 0.8);
+      border: 1px solid var(--border-dark);
+      border-radius: 10px;
+      color: var(--text-offwhite);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--accent-lavender);
+      box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+      background: rgba(20, 20, 20, 0.9);
+    }
+
+    textarea {
+      min-height: 180px;
+      resize: vertical;
+    }
+
+    /* Footer */
+    footer {
+      background: rgba(10, 10, 10, 0.9);
+      padding: 3rem 2rem;
+      text-align: center;
+      border-top: 1px solid rgba(31, 31, 31, 0.5);
+      backdrop-filter: blur(12px);
+      position: relative;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent-lavender), var(--cta-coral), var(--highlight-blue));
+    }
+
+    .social-links {
+      margin: 2rem 0;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .social-links a {
+      color: var(--text-offwhite);
+      font-size: 1.8rem;
+      transition: all 0.3s ease;
+      position: relative;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+
+    .social-links a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: var(--hover-gold);
+      transform: scale(1.2);
+      text-shadow: 0 0 15px rgba(251, 191, 36, 0.7);
+    }
+
+    .social-links a:hover::before {
+      border-color: var(--hover-gold);
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+    }
+
+    .copyright {
+      color: var(--text-offwhite-dim);
+      font-size: 0.9rem;
+      opacity: 0.7;
+      margin-top: 1rem;
+    }
+
+    /* Floating Elements */
+    .floating-element {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.3;
+      z-index: -1;
+    }
+
+    .floating-1 {
+      width: 300px;
+      height: 300px;
+      background: var(--accent-lavender);
+      top: 10%;
+      left: 5%;
+      animation: floatAnimation 15s infinite ease-in-out;
+    }
+
+    .floating-2 {
+      width: 400px;
+      height: 400px;
+      background: var(--cta-coral);
+      bottom: 10%;
+      right: 5%;
+      animation: floatAnimation 18s infinite ease-in-out reverse;
+    }
+
+    .floating-3 {
+      width: 200px;
+      height: 200px;
+      background: var(--highlight-blue);
+      top: 50%;
+      left: 30%;
+      animation: floatAnimation 12s infinite ease-in-out;
+    }
+
+    @keyframes floatAnimation {
+      0%, 100% {
+        transform: translate(0, 0);
+      }
+      25% {
+        transform: translate(50px, 50px);
+      }
+      50% {
+        transform: translate(0, 100px);
+      }
+      75% {
+        transform: translate(-50px, 50px);
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      section h2 {
+        font-size: 2.2rem;
+      }
+      
+      .grid {
+        gap: 2rem;
+      }
+      
+      .card {
+        padding: 2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      section h2 {
+        font-size: 2rem;
+      }
+
+      .profile-img {
+        max-width: 220px;
+      }
+
+      main {
+        padding: 1.5rem;
+      }
+
+      .contact-form {
+        padding: 2rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .project-links {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Background Elements -->
+  <div class="gradient-mesh"></div>
+  
+  <div class="floating-element floating-1"></div>
+  <div class="floating-element floating-2"></div>
+  <div class="floating-element floating-3"></div>
+  
+  <!-- Particle Animation -->
+  <div class="particles" id="particles"></div>
+  
+  <!-- Code Animation Overlay -->
+  <div class="code-overlay">
+    <div class="code-text">
+      function portfolio() {
+        const skills = ["Java", "Python", "C", "Cybersecurity", "AI Tools", "HTML", "Prompt Engineering", "Figma"];
+        skills.forEach(skill => {
+          console.log(`Mastering: ${skill}`);
+        });
+        return "Building the future with code & creativity!";
+      }
+      portfolio();
+    </div>
+    <div class="code-text" style="left: 25%; animation-delay: 5s;">
+      // AI Prompt Generator
+      const generatePrompt = (topic, style) => {
+        const styles = {
+          technical: `Provide detailed technical explanation of ${topic}`,
+          creative: `Write a creative piece about ${topic}`,
+          tutorial: `Create step-by-step tutorial for ${topic}`
+        };
+        return styles[style] || `Explain ${topic} clearly`;
+      }
+      console.log(generatePrompt("neural networks", "technical"));
+    </div>
+    <div class="code-text" style="left: 50%; animation-delay: 10s;">
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <title>Sai's Cyber Portfolio</title>
+          <style>
+            body { 
+              background: #0A0A0A;
+              color: #F3F4F6;
+              font-family: 'Inter', sans-serif;
+            }
+          </style>
+        </head>
+        <body>
+          <h1>Welcome to My Digital Realm</h1>
+          <p>Where code meets creativity.</p>
+        </body>
+      </html>
+    </div>
+    <div class="code-text" style="left: 75%; animation-delay: 15s;">
+      # Cybersecurity Script Example
+      def detect_intrusion(logs):
+          threats = []
+          for log in logs:
+              if "SQL injection" in log or "XSS" in log:
+                  threats.append(log)
+          return threats
+      
+      logs = ["Normal request", "XSS attempt detected", "User login"]
+      print(detect_intrusion(logs))
+    </div>
+  </div>
+
+  <header id="header">
+    <div class="header-content">
+      <h1 class="logo">Sai Samslesh</h1>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#achievements">Achievements</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="about">
+      <h2>About Me</h2>
+      <div class="about-content">
+        <div class="profile-img-container">
+          <img src="https://via.placeholder.com/280x280/0A0A0A/8B5CF6?text=Sai+Samslesh" alt="Sai Samslesh" class="profile-img">
+        </div>
+        <div class="about-text">
+          <p>I'm a passionate and curious tech enthusiast with a deep interest in AI, cybersecurity, and full-stack web development. I enjoy exploring the technical depths of how systems work, whether that's building engaging and modern websites or diving into the logic behind cybersecurity techniques and ethical hacking.</p>
+          <p>I'm Sai Samslesh, actively learning and applying skills in languages like C, Java, Python, and HTML/CSS, and I often experiment with design tools like Figma and animation tools like After Effects to enhance user experiences. My achievements include completing challenges on platforms like HackerRank, contributing to collaborative coding projects, and developing modern web interfaces inspired by real-world social platforms.</p>
+          <p>Currently, I'm exploring the intersection of technology and creativity, aiming to solve real-life problems with clean, efficient, and secure digital solutions.</p>
+          <div class="skills">
+            <span class="skill-tag">Java (learning)</span>
+            <span class="skill-tag">Python (learning)</span>
+            <span class="skill-tag">C</span>
+            <span class="skill-tag">Cybersecurity (learning)</span>
+            <span class="skill-tag">AI Tools</span>
+            <span class="skill-tag">HTML/CSS</span>
+            <span class="skill-tag">Prompt Engineering</span>
+            <span class="skill-tag">Figma (learning)</span>
+            <span class="skill-tag">JavaScript (learning)</span>
+            <span class="skill-tag">After Effects</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Technical Skills</h2>
+      <div class="grid">
+        <div class="card">
+          <h3><i class="fas fa-brain"></i> AI Tools</h3>
+          <ul>
+            <li>ChatGPT - Advanced prompt engineering</li>
+            <li>Deepseek - AI-assisted coding</li>
+            <li>Blackbox.ai - Code generation</li>
+            <li>Grok - AI research assistant</li>
+            <li>Lovable - Creative AI applications</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3><i class="fas fa-terminal"></i> Prompt Engineering</h3>
+          <ul>
+            <li>Built complex prompt chains</li>
+            <li>Developed AI workflow automations</li>
+            <li>Created specialized AI personas</li>
+            <li>Optimized outputs for technical content</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3><i class="fas fa-code"></i> Programming</h3>
+          <ul>
+            <li>C Programming - Intermediate</li>
+            <li>Java - Learning OOP concepts</li>
+            <li>Python - Fundamentals & scripting</li>
+            <li>HTML/CSS - Responsive design</li>
+            <li>JavaScript - Basic DOM manipulation</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3><i class="fas fa-laptop-code"></i> Development</h3>
+          <ul>
+            <li>Web Development - Modern UI/UX</li>
+            <li>Figma - Wireframing & prototyping</li>
+            <li>After Effects - Motion graphics</li>
+            <li>Technical Writing - Documentation</li>
+            <li>Git - Version control basics</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="achievements">
+      <h2>Achievements</h2>
+      <div class="grid">
+        <div class="card">
+          <h3><i class="fas fa-trophy"></i> HackerRank</h3>
+          <span class="date">2024 - Present</span>
+          <ul>
+            <li>5★ in C Language</li>
+            <li>Completed 15+ challenges</li>
+            <li>Ranked in top 20% for C</li>
+            <li>Started Python track</li>
+          </ul>
+          <div style="margin-top: 1.5rem;">
+            <span class="badge">Gold Badge</span>
+            <span class="badge">C Programmer</span>
+            <span class="badge">Problem Solver</span>
+          </div>
+          <a href="#" class="btn btn-outline" style="margin-top: 2rem;">
+            <i class="fas fa-external-link-alt"></i> View Profile
+          </a>
+        </div>
+        <div class="card">
+          <h3><i class="fas fa-medal"></i> LeetCode</h3>
+          <span class="date">2024 - Present</span>
+          <ul>
+            <li>Solved first 5 problems</li>
+            <li>Started algorithm studies</li>
+            <li>Exploring data structures</li>
+            <li>Daily coding practice</li>
+          </ul>
+          <a href="#" class="btn btn-outline" style="margin-top: 2rem;">
+            <i class="fas fa-external-link-alt"></i> View Profile
+          </a>
+        </div>
+        <div class="card">
+          <h3><i class="fas fa-award"></i> Certifications</h3>
+          <span class="date">2024 - Present</span>
+          <ul>
+            <li>Prompt Engineering Certification</li>
+            <li>AI Tools Specialist</li>
+            <li>Web Development Basics</li>
+            <li>Cybersecurity Fundamentals</li>
+          </ul>
+          <a href="#" class="btn btn-outline" style="margin-top: 2rem;">
+            <i class="fas fa-external-link-alt"></i> View Certificates
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="project-img-container">
+            <img src="https://via.placeholder.com/600x400/0A0A0A/8B5CF6?text=AI+Prompt+Generator" alt="AI Project" class="project-img">
+          </div>
+          <h3>AI Prompt Generator</h3>
+          <p>Created an advanced AI-powered tool that generates effective prompts for various AI models with customizable parameters, improving output quality by 40% compared to basic prompts. Features include style selection, technical depth adjustment, and example-based generation.</p>
+          <div class="project-links">
+            <a href="#" class="btn">
+              <i class="fab fa-github"></i> View Code
+            </a>
+            <a href="#" class="btn btn-outline">
+              <i class="fas fa-external-link-alt"></i> Live Demo
+            </a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="project-img-container">
+            <img src="https://via.placeholder.com/600x400/0A0A0A/F472B6?text=Portfolio+Website" alt="Web Project" class="project-img">
+          </div>
+          <h3>Interactive Portfolio</h3>
+          <p>Designed and developed this responsive portfolio website with modern UI/UX principles, animations, and a dark theme. Implemented particle effects, smooth scrolling, and interactive elements to create an engaging user experience that showcases technical skills.</p>
+          <div class="project-links">
+            <a href="#" class="btn">
+              <i class="fab fa-github"></i> Source Code
