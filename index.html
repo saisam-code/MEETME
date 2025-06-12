@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sai Samslesh | AI & Tech Portfolio</title>
+  <title>Sai Samslesh | Tech Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&family=Rubik:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -316,9 +316,22 @@
       line-height: 1.6;
     }
 
-    .hero-buttons {
-      display: flex;
-      gap: 1.5rem;
+    .hero-email {
+      font-size: 1.2rem;
+      color: var(--neon-blue);
+      background: rgba(0, 245, 255, 0.1);
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      border: 1px solid rgba(0, 245, 255, 0.3);
+      transition: all var(--transition-base);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .hero-email:hover {
+      background: rgba(0, 245, 255, 0.2);
+      box-shadow: 0 0 20px rgba(0, 245, 255, 0.2);
     }
 
     /* About Section */
@@ -528,159 +541,36 @@
       box-shadow: 0 0 20px rgba(0, 255, 163, 0.5);
     }
 
-    /* Projects */
-    .project-img-container {
-      position: relative;
-      border-radius: 16px;
-      overflow: hidden;
-      margin-bottom: 2rem;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    /* Currently Learning Section */
+    .learning-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .learning-item {
+      background: rgba(20, 20, 20, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 1.5rem;
       transition: all var(--transition-base);
+      backdrop-filter: blur(5px);
     }
 
-    .project-img {
-      width: 100%;
-      display: block;
-      transition: all 0.6s ease;
-    }
-
-    .project-img-container::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to bottom, rgba(0, 245, 255, 0.2), rgba(255, 0, 228, 0.3));
-      opacity: 0;
-      transition: all var(--transition-base);
-    }
-
-    .project-img-container:hover {
+    .learning-item:hover {
+      background: rgba(30, 30, 30, 0.8);
       transform: translateY(-5px);
-      box-shadow: 0 12px 40px rgba(0, 245, 255, 0.3);
+      box-shadow: 0 10px 30px rgba(0, 245, 255, 0.1);
+      border-color: rgba(0, 245, 255, 0.2);
     }
 
-    .project-img-container:hover .project-img {
-      transform: scale(1.05);
-    }
-
-    .project-img-container:hover::after {
-      opacity: 0.7;
-    }
-
-    .project-links {
-      display: flex;
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-
-    /* Buttons */
-    .btn {
-      background: linear-gradient(90deg, var(--neon-blue), var(--neon-green));
-      color: var(--bg-dark);
-      border: none;
-      padding: 1rem 2rem;
-      border-radius: 10px;
-      cursor: pointer;
+    .learning-item h3 {
       font-family: 'Poppins', sans-serif;
-      font-size: 1rem;
-      font-weight: 600;
-      transition: all var(--transition-bounce);
-      display: inline-flex;
+      color: var(--neon-blue);
+      margin-bottom: 1rem;
+      display: flex;
       align-items: center;
       gap: 0.8rem;
-      box-shadow: 0 4px 15px rgba(0, 245, 255, 0.4);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      transition: all 0.6s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 8px 25px rgba(0, 245, 255, 0.6);
-    }
-
-    .btn:hover::before {
-      left: 100%;
-    }
-
-    .btn-outline {
-      background: transparent;
-      border: 2px solid var(--neon-blue);
-      color: var(--neon-blue);
-      box-shadow: none;
-    }
-
-    .btn-outline:hover {
-      background: var(--neon-blue);
-      color: var(--bg-dark);
-      box-shadow: 0 8px 25px rgba(0, 245, 255, 0.6);
-      border-color: var(--neon-blue);
-    }
-
-    /* Contact Form */
-    .contact-form {
-      max-width: 700px;
-      margin: 0 auto;
-      background: var(--card-bg);
-      padding: 3rem;
-      border-radius: 20px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-      border: 1px solid var(--card-border);
-      backdrop-filter: blur(10px);
-      transition: all var(--transition-base);
-    }
-
-    .contact-form:hover {
-      box-shadow: 0 12px 40px rgba(0, 245, 255, 0.3);
-      border-color: rgba(0, 245, 255, 0.3);
-    }
-
-    .form-group {
-      margin-bottom: 2rem;
-      position: relative;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 0.5rem;
-      color: var(--text-secondary);
-      font-weight: 500;
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 1.2rem;
-      background: rgba(15, 15, 15, 0.8);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 10px;
-      color: var(--text-primary);
-      font-family: 'Inter', sans-serif;
-      font-size: 1rem;
-      transition: all var(--transition-base);
-    }
-
-    input:focus, textarea:focus {
-      outline: none;
-      border-color: var(--neon-blue);
-      box-shadow: 0 0 20px rgba(0, 245, 255, 0.4);
-      background: rgba(20, 20, 20, 0.9);
-    }
-
-    textarea {
-      min-height: 180px;
-      resize: vertical;
     }
 
     /* Footer */
@@ -820,10 +710,6 @@
       .profile-img {
         max-width: 280px;
       }
-
-      .contact-form {
-        padding: 2rem;
-      }
     }
 
     @media (max-width: 576px) {
@@ -831,22 +717,8 @@
         font-size: 2.2rem;
       }
       
-      .hero-buttons {
-        flex-direction: column;
-      }
-      
-      .grid {
+      .learning-grid {
         grid-template-columns: 1fr;
-      }
-      
-      .project-links {
-        flex-direction: column;
-        gap: 1rem;
-      }
-      
-      .btn {
-        width: 100%;
-        justify-content: center;
       }
     }
   </style>
@@ -871,8 +743,7 @@
           <li><a href="#about" class="animated-underline">About</a></li>
           <li><a href="#skills" class="animated-underline">Skills</a></li>
           <li><a href="#achievements" class="animated-underline">Achievements</a></li>
-          <li><a href="#projects" class="animated-underline">Projects</a></li>
-          <li><a href="#contact" class="animated-underline">Contact</a></li>
+          <li><a href="#learning" class="animated-underline">Learning</a></li>
         </ul>
       </nav>
     </div>
@@ -881,15 +752,10 @@
   <main>
     <!-- Hero Section -->
     <section class="hero" id="home">
-      <h1>Building the Future with AI & Code</h1>
-      <p>I'm a passionate technologist specializing in AI, cybersecurity, and full-stack development. I create innovative solutions that bridge technology and human experience.</p>
-      <div class="hero-buttons">
-        <a href="#projects" class="btn">
-          <i class="fas fa-code"></i> View Projects
-        </a>
-        <a href="#contact" class="btn btn-outline">
-          <i class="fas fa-paper-plane"></i> Contact Me
-        </a>
+      <h1>Building the Future with Technology</h1>
+      <p>Second-year student passionate about programming, AI, and creating impactful solutions through code.</p>
+      <div class="hero-email">
+        <i class="fas fa-envelope"></i> 24kb1a0517@nbkrist.org
       </div>
     </section>
 
@@ -897,25 +763,24 @@
       <h2>About Me</h2>
       <div class="about-content">
         <div class="profile-img-container">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2GMCAPE1pAZMBFIInJYEM1MX0aX1H2mDErA&s" alt="Sai Samslesh" class="profile-img">
+          <img src="https://via.placeholder.com/400x400/0A0A0A/00F5FF?text=Your+Photo" alt="Sai Samslesh" class="profile-img">
         </div>
         <div class="about-text">
-          <p>I'm a passionate and curious tech enthusiast with a deep interest in AI, cybersecurity, and full-stack web development. I enjoy exploring the technical depths of how systems work, whether that's building engaging and modern websites or diving into the logic behind cybersecurity techniques and ethical hacking.</p>
-          <p>My journey in technology has led me to master various programming languages and tools, with a particular focus on creating seamless user experiences and robust backend systems. I thrive on solving complex problems and turning innovative ideas into reality.</p>
-          <p>Currently, I'm exploring the intersection of artificial intelligence and human-computer interaction, developing solutions that leverage cutting-edge technologies to create meaningful impact.</p>
+          <p>Hi, I'm Sai Samslesh Murali Anthathi, a passionate and driven second-year student with a strong interest in technology, innovation, and real-world problem-solving. I'm currently building my foundation in core programming languages like C, Java, and Python, while also diving deep into advanced areas such as Data Structures & Algorithms, Full Stack Web Development, App Development, Cybersecurity, and AI tools.</p>
+          
+          <p>My goal is to become a versatile tech professional, combining software engineering, UI/UX design, cloud computing, and emerging technologies like AI agents to create impactful solutions.</p>
+          
+          <p>I believe in continuous learning and hands-on practice, and I'm always excited to take on new challenges that push my boundaries. Whether it's contributing to a project, working on a startup idea, or solving a tough coding problem, I'm all in.</p>
+          
+          <p>Let's build the future, one line of code at a time.</p>
+
           <div class="skills">
+            <span class="skill-tag">C Language</span>
+            <span class="skill-tag">Prompt Engineering</span>
+            <span class="skill-tag">AI Tools</span>
             <span class="skill-tag">Java</span>
             <span class="skill-tag">Python</span>
-            <span class="skill-tag">C</span>
-            <span class="skill-tag">Cybersecurity</span>
-            <span class="skill-tag">AI/ML</span>
             <span class="skill-tag">HTML/CSS</span>
-            <span class="skill-tag">JavaScript</span>
-            <span class="skill-tag">React</span>
-            <span class="skill-tag">Node.js</span>
-            <span class="skill-tag">Figma</span>
-            <span class="skill-tag">Prompt Engineering</span>
-            <span class="skill-tag">After Effects</span>
           </div>
         </div>
       </div>
@@ -925,43 +790,30 @@
       <h2>Technical Skills</h2>
       <div class="grid">
         <div class="card">
-          <h3><i class="fas fa-brain"></i> AI & Machine Learning</h3>
+          <h3><i class="fas fa-code"></i> Programming</h3>
           <ul>
-            <li>Advanced prompt engineering for LLMs</li>
+            <li>C Language (Intermediate)</li>
+            <li>Java (Learning OOP concepts)</li>
+            <li>Python (Fundamentals & scripting)</li>
+            <li>HTML/CSS (Responsive design)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3><i class="fas fa-brain"></i> AI & Tools</h3>
+          <ul>
+            <li>Advanced Prompt Engineering</li>
             <li>AI-assisted development workflows</li>
-            <li>Machine learning fundamentals</li>
-            <li>Neural network architectures</li>
-            <li>Natural language processing</li>
+            <li>ChatGPT, Deepseek, Blackbox.ai</li>
+            <li>AI workflow automation</li>
           </ul>
         </div>
         <div class="card">
-          <h3><i class="fas fa-shield-alt"></i> Cybersecurity</h3>
+          <h3><i class="fas fa-laptop-code"></i> Development</h3>
           <ul>
-            <li>Ethical hacking techniques</li>
-            <li>Network security principles</li>
-            <li>Vulnerability assessment</li>
-            <li>Cryptography fundamentals</li>
-            <li>Secure coding practices</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3><i class="fas fa-code"></i> Full-Stack Development</h3>
-          <ul>
-            <li>Modern JavaScript frameworks</li>
-            <li>RESTful API design</li>
-            <li>Database architecture</li>
-            <li>Cloud deployment</li>
-            <li>CI/CD pipelines</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3><i class="fas fa-paint-brush"></i> Design & UX</h3>
-          <ul>
-            <li>UI/UX design principles</li>
-            <li>Interactive prototyping</li>
-            <li>Motion design</li>
-            <li>Design systems</li>
-            <li>User research methods</li>
+            <li>Web Development basics</li>
+            <li>Figma (Wireframing)</li>
+            <li>Technical Writing</li>
+            <li>Version Control (Git)</li>
           </ul>
         </div>
       </div>
@@ -975,123 +827,43 @@
           <span class="date">2024 - Present</span>
           <ul>
             <li>5★ in C Language</li>
-            <li>Completed 50+ challenges</li>
-            <li>Ranked in top 10% for C</li>
-            <li>Gold badge in Python</li>
+            <li>Completed 15+ challenges</li>
+            <li>Ranked in top 20% for C</li>
+            <li>Started Python track</li>
           </ul>
           <div style="margin-top: 1.5rem;">
             <span class="badge">Gold Badge</span>
+            <span class="badge">C Programmer</span>
             <span class="badge">Problem Solver</span>
-            <span class="badge">Algorithm Expert</span>
           </div>
           <a href="#" class="btn btn-outline" style="margin-top: 2rem;">
             <i class="fas fa-external-link-alt"></i> View Profile
           </a>
         </div>
-        <div class="card">
-          <h3><i class="fas fa-medal"></i> LeetCode</h3>
-          <span class="date">2024 - Present</span>
-          <ul>
-            <li>Solved 100+ problems</li>
-            <li>Specialized in algorithms</li>
-            <li>Data structures mastery</li>
-            <li>Daily coding practice</li>
-          </ul>
-          <a href="#" class="btn btn-outline" style="margin-top: 2rem;">
-            <i class="fas fa-external-link-alt"></i> View Profile
-          </a>
-        </div>
-        <div class="card">
-          <h3><i class="fas fa-award"></i> Certifications</h3>
-          <span class="date">2024 - Present</span>
-          <ul>
-            <li>Google AI Fundamentals</li>
-            <li>AWS Certified Cloud Practitioner</li>
-            <li>Prompt Engineering Specialist</li>
-            <li>Cybersecurity Essentials</li>
-          </ul>
-          <a href="#" class="btn btn-outline" style="margin-top: 2rem;">
-            <i class="fas fa-external-link-alt"></i> View Certificates
-          </a>
-        </div>
       </div>
     </section>
 
-    <section id="projects">
-      <h2>Projects</h2>
-      <div class="grid">
-        <div class="card">
-          <div class="project-img-container">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2GMCAPE1pAZMBFIInJYEM1MX0aX1H2mDErA&s" alt="AI Project" class="project-img">
-          </div>
-          <h3>Advanced AI Prompt Generator</h3>
-          <p>Developed a sophisticated prompt engineering tool that leverages machine learning to generate optimal prompts for various AI models. Features include context-aware suggestions, style adaptation, and performance optimization.</p>
-          <div class="project-links">
-            <a href="#" class="btn">
-              <i class="fab fa-github"></i> View Code
-            </a>
-            <a href="#" class="btn btn-outline">
-              <i class="fas fa-external-link-alt"></i> Live Demo
-            </a>
-          </div>
+    <section id="learning">
+      <h2>Currently Learning</h2>
+      <div class="learning-grid">
+        <div class="learning-item">
+          <h3><i class="fas fa-globe"></i> Web & App Development</h3>
         </div>
-        <div class="card">
-          <div class="project-img-container">
-            <img src="https://via.placeholder.com/600x400/0A0A0A/FF00E4?text=Cybersecurity+Tool" alt="Security Project" class="project-img">
-          </div>
-          <h3>Network Security Analyzer</h3>
-          <p>Built a comprehensive cybersecurity tool that scans networks for vulnerabilities, detects anomalies, and provides remediation suggestions. Incorporates machine learning for threat pattern recognition.</p>
-          <div class="project-links">
-            <a href="#" class="btn">
-              <i class="fab fa-github"></i> Source Code
-            </a>
-            <a href="#" class="btn btn-outline">
-              <i class="fas fa-external-link-alt"></i> Documentation
-            </a>
-          </div>
+        <div class="learning-item">
+          <h3><i class="fas fa-brain"></i> AI & Machine Learning</h3>
         </div>
-        <div class="card">
-          <div class="project-img-container">
-            <img src="https://via.placeholder.com/600x400/0A0A0A/00FFA3?text=Web+Application" alt="Web Project" class="project-img">
-          </div>
-          <h3>Interactive Learning Platform</h3>
-          <p>Created a full-stack educational platform featuring real-time collaboration tools, interactive coding exercises, and personalized learning paths using AI recommendations.</p>
-          <div class="project-links">
-            <a href="#" class="btn">
-              <i class="fab fa-github"></i> Code
-            </a>
-            <a href="#" class="btn btn-outline">
-              <i class="fas fa-external-link-alt"></i> Visit Site
-            </a>
-          </div>
+        <div class="learning-item">
+          <h3><i class="fas fa-shield-alt"></i> Cybersecurity</h3>
         </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <h2>Get In Touch</h2>
-      <div class="contact-form">
-        <form>
-          <div class="form-group">
-            <label for="name">Your Name</label>
-            <input type="text" id="name" placeholder="Enter your name" required>
-          </div>
-          <div class="form-group">
-            <label for="email">Your Email</label>
-            <input type="email" id="email" placeholder="Enter your email" required>
-          </div>
-          <div class="form-group">
-            <label for="subject">Subject</label>
-            <input type="text" id="subject" placeholder="What's this about?">
-          </div>
-          <div class="form-group">
-            <label for="message">Your Message</label>
-            <textarea id="message" placeholder="Hello Sai, I'd like to talk about..."></textarea>
-          </div>
-          <button type="submit" class="btn">
-            <i class="fas fa-paper-plane"></i> Send Message
-          </button>
-        </form>
+        <div class="learning-item">
+          <h3><i class="fas fa-cloud"></i> Cloud Computing</h3>
+        </div>
+        <div class="learning-item">
+          <h3><i class="fas fa-cube"></i> Blender & UI/UX Design</h3>
+        </div>
+        <div class="learning-item">
+          <h3><i class="fas fa-robot"></i> Prompt Engineering & Automation</h3>
+        </div>
       </div>
     </section>
   </main>
@@ -1102,9 +874,8 @@
       <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
       <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
       <a href="#" aria-label="HackerRank"><i class="fab fa-hackerrank"></i></a>
-      <a href="#" aria-label="CodePen"><i class="fab fa-codepen"></i></a>
     </div>
-    <p>Let's build something amazing together!</p>
+    <p>Let's connect and collaborate!</p>
     <p class="copyright">© 2024 Sai Samslesh. All rights reserved.</p>
   </footer>
 
@@ -1158,26 +929,6 @@
       });
     });
 
-    // Form Submission
-    const form = document.querySelector('form');
-    if (form) {
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Create a cool confirmation effect
-        const submitBtn = this.querySelector('button[type="submit"]');
-        submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-        submitBtn.style.background = 'linear-gradient(90deg, var(--neon-green), var(--neon-blue))';
-        
-        setTimeout(() => {
-          submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
-          submitBtn.style.background = 'linear-gradient(90deg, var(--neon-blue), var(--neon-green))';
-        }, 3000);
-        
-        this.reset();
-      });
-    }
-
     // Intersection Observer for section animations
     const observerOptions = {
       threshold: 0.1
@@ -1206,13 +957,8 @@
     };
     
     // Apply to cards and buttons
-    document.querySelectorAll('.card, .btn, .social-links a').forEach(el => {
+    document.querySelectorAll('.card, .learning-item, .hero-email, .social-links a').forEach(el => {
       animateOnHover(el);
-    });
-    
-    // More pronounced animation for project cards
-    document.querySelectorAll('.project-img-container').forEach(el => {
-      animateOnHover(el, 1.03, -8);
     });
     
     // Typewriter effect for hero text
